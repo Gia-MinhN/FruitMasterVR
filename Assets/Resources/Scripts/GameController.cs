@@ -72,6 +72,7 @@ public class GameController : MonoBehaviour
         }
 
         weapon.transform.localPosition = new Vector3(0,0,0);
+        weapon.transform.localRotation = Quaternion.Euler(45, 0, 0);
         weapon.name = "Weapon";
     }
 
@@ -145,6 +146,9 @@ public class GameController : MonoBehaviour
         game_state = GAME_STATE.COUNTDOWN;
         fruit_hit = new List<int>();
         fruit_miss = new List<int>();
+
+        VariableHolder.left_weapon = Random.Range(1, 4);
+        VariableHolder.right_weapon = Random.Range(1, 4);
 
         switch(VariableHolder.left_weapon) {
             case 1:
@@ -249,7 +253,7 @@ public class GameController : MonoBehaviour
 
     void returnMenu() {
         if(global_time <= 0) {
-            SceneManager.LoadScene("MenuScene");
+            SceneManager.LoadScene("GameScene");
         }
     }
 
